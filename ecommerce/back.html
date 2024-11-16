@@ -1,0 +1,56 @@
+<?php
+  $connection = mysqli_connect("localhost", "root", "","train",3306);
+  if(isset($_POST["submit"]))
+  {
+    $name = $_POST['name'];
+    $email = $_POST['time'];
+
+    
+    $sql = "insert into user(name,time)values('$name','$time')";
+    if(mysqli_query($connection,$sql))
+    {
+        echo '<script>location.replace("register.php")</script>';
+    }
+    else
+    {
+        echo "Some thing Error" .$connection->error;
+
+    }
+    
+
+
+
+
+  }
+
+
+
+?>
+<html>
+    <head>
+        <title>The login form</title>
+        <style>
+            body{
+                width: 100%;
+                background-color:lightblue;
+                font-family:"Roboto";  
+            }
+        </style>
+    </head>
+    <body>
+    <h1 style="color:green;">THE AGENT REGISTRATION PAGE</h1>
+                            <br>
+                            <br>
+    <fieldset>
+        <legend style="padding:15px;"><strong>Personal info</strong></legend>
+        <form method='post' action='register.php'><center>
+        Username: <input type='text' name='unme' required><br><br><br>
+        Password: <input type='password' name='pss' required><br><br><br>
+        Email:<input type='email' name='eml' required><br><br><br>
+        Mobile:<input type='text' name='mob' required><br><br><br>
+        <input type='submit' value='Submit' name="submit">
+        </center>
+    </form>
+    </fieldset>
+    </body>
+</html>
